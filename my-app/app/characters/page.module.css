@@ -1,0 +1,59 @@
+/* app/characters/page.module.css */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #ff6, 0 0 10px #ff6, 0 0 15px #ff6, 0 0 20px #ff6, 0 0 25px #ff6, 0 0 30px #ff6, 0 0 35px #ff6;
+  }
+  100% {
+    box-shadow: 0 0 10px #f06, 0 0 20px #f06, 0 0 30px #f06, 0 0 40px #f06, 0 0 50px #f06, 0 0 60px #f06, 0 0 70px #f06;
+  }
+}
+
+.magicalBg {
+  background-image: url('/dragonballz-background.jpg');
+}
+
+.animateFadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animateBounce {
+  animation: bounce 1s infinite;
+}
+
+.magicalCard {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: glow 2s infinite alternate;
+}
+
+.magicalSidebar {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+}
+
+.glow-on-hover:hover {
+  animation: glow 1s infinite alternate;
+}
