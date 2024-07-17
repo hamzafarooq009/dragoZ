@@ -31,6 +31,9 @@
 
 .magicalBg {
   background-image: url('/dragonballz-background.jpg');
+  /* image-rendering: -webkit-optimize-contrast; */
+  background-position: center;
+  background-size: cover;
 }
 
 .animateFadeIn {
@@ -56,4 +59,66 @@
 
 .glow-on-hover:hover {
   animation: glow 1s infinite alternate;
+}
+
+/* Add this to your CSS file */
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.bg-animated {
+  /* background: url('/dragonballz-background.jpg') repeat; */
+  animation: moveBackground 20s linear infinite;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+  
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.animate-fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: 'DragonBallZ';
+  src: url('/fonts/DragonBallZ.ttf') format('truetype');
+}
+
+body, h1, h2, h3, h4, h5, h6, p, button {
+  font-family: 'DragonBallZ', sans-serif;
+}
+
+h1 {
+  font-family: 'DragonBallZ', sans-serif;
+}
+
+button {
+  font-family: 'DragonBallZ', sans-serif;
 }

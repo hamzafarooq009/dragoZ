@@ -2,3 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Saiyan-Sans';
+    src: url('/fonts/Saiyan-Sans.ttf') format('truetype');
+}
+  
+h1 {
+    font-family: 'Saiyan-Sans', sans-serif;
+}
+  
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Permanent Marker', cursive;
+}
