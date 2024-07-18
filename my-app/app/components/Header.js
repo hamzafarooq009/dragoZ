@@ -18,9 +18,13 @@ const Header = () => {
         router.push('/auth');
     };
 
+    const handleLogoClick = () => {
+        router.push('/');
+    };
+
     return (
         <header className="bg-gray-800 p-4 text-white flex justify-between items-center">
-            <img src="/dbzlogo.png" alt="Logo" className="h-20 w-45" />
+            <img src="/dbzlogo.png" alt="Logo" className="h-20 w-45" onClick={handleLogoClick}/>
             <div className="flex-1 flex justify-end items-center space-x-4">
                 {user ? (
                     <>

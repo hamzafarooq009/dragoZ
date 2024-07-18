@@ -76,10 +76,12 @@ const CharactersPage = () => {
   };
 
   return (
-    <div className="bg-cover bg-center min-h-screen pt-20" style={{ backgroundImage: "url('/dragonballz-background.jpg')" }}>
+    <div className=" bg-center min-h-screen" style={{ backgroundImage: "url('/dragonballz-background.jpg')" }}>
       <div className="container mx-auto p-4">
-        <h1 className="text-5xl font-bold text-white mb-12 animate-fade-in">Dragon Ball Characters</h1>
-        <div className="flex justify-center mb-8">
+        {/* <h1 className="text-5xl text-white mb-10">Characters</h1> */}
+        <h1 className="text-5xl text-white flex justify-center mb-10">search your character</h1>
+        <div className="flex justify-center mb-20">
+          
           <div className="relative w-full max-w-lg">
             <input
               type="text"

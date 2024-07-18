@@ -27,19 +27,20 @@ export default function HomePage() {
 
     return (
         <div className={`min-h-screen flex flex-col items-center justify-center ${styles.bgDragonBall} relative overflow-hidden`}>
-            <Canvas >
+            <Canvas className="w-screen h-screen">
                 <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
+                <pointLight position={[20, 20, 20]} />
                 <Stars />
                 <OrbitControls />
             </Canvas>
+
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
+                animate={{ opacity: 20 }}
+                transition={{ duration: 20 }}
                 className="absolute top-1/4 text-center text-white"
             >
-                <h1 className="text-5xl font-bold mb-8">Welcome to Dragon Ball Universe</h1>
+                <h1 className="text-8xl mb-8">Welcome to Dragon Ball Universe</h1>
                 <div className="space-x-4">
                     <button
                         onClick={() => router.push('/characters')}
