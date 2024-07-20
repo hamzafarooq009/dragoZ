@@ -4,27 +4,33 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CharacterCard from '../components/CharacterCard';
 import CharacterSidebar from '../components/CharacterSidebar';
+import CreateCharacterModal from '../components/CreateCharacterModal';
+import { useCharacters } from '../context/CharactersContext';
 
 const CharactersPage = () => {
-  const [characters, setCharacters] = useState([]);
+  const { characters, setCharacters } = useCharacters();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [planets, setPlanets] = useState([]);
   const [selectedID, setSelectedID] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://dragonball-api.com/api/characters?limit=58`);
         const charactersData = response.data.items;
-        setCharacters(charactersData);
+        setCharacters((prevCharacters) => {
+          const newCharacters = charactersData.filter(character => !prevCharacters.some(prevChar => prevChar.id === character.id));
+          return [...prevCharacters, ...newCharacters];
+        });
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
     fetchData();
-  }, []);
+  }, [setCharacters]);
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -67,6 +73,14 @@ const CharactersPage = () => {
     setIsSidebarOpen(false);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -76,12 +90,10 @@ const CharactersPage = () => {
   };
 
   return (
-    <div className=" bg-center min-h-screen" style={{ backgroundImage: "url('/dragonballz-background.jpg')" }}>
+    <div className="bg-cover min-h-screen" style={{ backgroundImage: "url('/dragonballz-background.jpg')" }}>
       <div className="container mx-auto p-4">
-        {/* <h1 className="text-5xl text-white mb-10">Characters</h1> */}
-        <h1 className="text-5xl text-white flex justify-center mb-10">search your character</h1>
+        <h1 className="text-5xl text-white flex justify-center mb-10">Search your character</h1>
         <div className="flex justify-center mb-20">
-          
           <div className="relative w-full max-w-lg">
             <input
               type="text"
@@ -92,6 +104,7 @@ const CharactersPage = () => {
             />
           </div>
         </div>
+
         <div className="flex">
           <div className="w-full">
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -118,6 +131,7 @@ const CharactersPage = () => {
           )}
         </div>
       </div>
+      {isModalOpen && <CreateCharacterModal closeModal={closeModal} />}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 /* app/characters/page.module.css */
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   0% {
     opacity: 0;
     transform: translateY(-10px);
@@ -9,7 +9,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 @keyframes bounce {
   0%, 100% {
@@ -36,9 +36,9 @@
   background-size: cover;
 }
 
-.animateFadeIn {
+/* .animateFadeIn {
   animation: fadeIn 1s ease-in-out;
-}
+} */
 
 .animateBounce {
   animation: bounce 1s infinite;
@@ -93,18 +93,18 @@
   min-height: 100vh;
 }
 
-.animate-fade-in {
+/* .animate-fade-in {
   animation: fadeIn 2s ease-in-out;
-}
+} */
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
   }
-}
+} */
 
 @font-face {
   font-family: 'DragonBallZ';

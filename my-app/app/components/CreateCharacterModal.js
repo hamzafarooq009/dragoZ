@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useCharacters } from '../context/CharactersContext';
 
 export default function CreateCharacterModal({ closeModal }) {
+  const { addCharacter } = useCharacters();
   const [formData, setFormData] = useState({
     name: '',
     kiLevel: '',
@@ -34,7 +36,7 @@ export default function CreateCharacterModal({ closeModal }) {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-        },
+      },
       });
       setGeneratedImage(response.data.data[0].url);
     } catch (error) {
@@ -45,7 +47,17 @@ export default function CreateCharacterModal({ closeModal }) {
   };
 
   const addImageToList = () => {
-    // Handle the logic for adding the generated image to the character list
+    const newCharacter = {
+      id: Date.now(),
+      name: formData.name,
+      kiLevel: formData.kiLevel,
+      maxKi: formData.maxKi,
+      race: formData.race,
+      gender: formData.gender,
+      planetOfOrigin: formData.planetOfOrigin,
+      image: generatedImage,
+    };
+    addCharacter(newCharacter);
     closeModal();
   };
 
@@ -115,10 +127,8 @@ export default function CreateCharacterModal({ closeModal }) {
           </button>
         </form>
         {isLoading && (
-          <div className="mt-4">
-            <div className="w-full bg-gray-200 rounded-full">
-              <div className="bg-blue-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{ width: '75%' }}>Loading...</div>
-            </div>
+          <div className="mt-4 flex justify-center">
+            <div className="loader" />
           </div>
         )}
         {generatedImage && (

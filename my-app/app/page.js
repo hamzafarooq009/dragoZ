@@ -10,6 +10,9 @@ import { useAuth } from './context/AuthContext';
 import CreateCharacterModal from './components/CreateCharacterModal';
 import styles from './page.module.css';
 
+import { useCharacters } from './context/CharactersContext';
+
+
 export default function HomePage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { user } = useAuth();
@@ -36,8 +39,8 @@ export default function HomePage() {
 
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 20 }}
-                transition={{ duration: 20 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
                 className="absolute top-1/4 text-center text-white"
             >
                 <h1 className="text-8xl mb-8">Welcome to Dragon Ball Universe</h1>
@@ -50,8 +53,7 @@ export default function HomePage() {
                     </button>
                     <button
                         onClick={openModal}
-                        className={`px-4 py-2 ${user ? 'bg-green-500 hover:bg-green-700' : 'bg-red-500 hover:bg-red-700'
-                            } text-white font-semibold rounded-lg shadow-md transition-colors`}
+                        className={`px-4 py-2 ${user ? 'bg-green-500 hover:bg-green-700' : 'bg-red-500 hover:bg-red-700'} text-white font-semibold rounded-lg shadow-md transition-colors`}
                         aria-label={user ? 'Create Character' : 'Sign Up'}
                     >
                         {user ? (
@@ -72,7 +74,7 @@ export default function HomePage() {
                     </button>
                 </div>
             </motion.div>
-            {isModalOpen && <CreateCharacterModal closeModal={closeModal} />}
+            {isModalOpen && <CreateCharacterModal closeModal={closeModal}/>}
         </div>
     );
 }
