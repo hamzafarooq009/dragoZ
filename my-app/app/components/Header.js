@@ -23,31 +23,37 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-gray-800 p-4 text-white flex justify-between items-center">
-            <img src="/dbzlogo.png" alt="Logo" className="h-20 w-45" onClick={handleLogoClick}/>
-            <div className="flex-1 flex justify-end items-center space-x-4">
-                {user ? (
-                    <>
-                        <div>Welcome, {user?.email}</div>
-                        <button
-                            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition-colors"
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        <div>Sign(in/up) to checkout exciting features</div>
-                        <button
-                            className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-colors"
-                            onClick={handleSignIn}
-                        >
-                            Sign(in/up)
-                        </button>
-                    </>
-                )}
+        <header className="flex flex-col items-center bg-[#1C1C1C] text-white">
+            <div className="px-4 lg:px-6 h-14 w-full flex items-center justify-between">
+                <img src="/dbzlogo.png" alt="Logo" className="h-20 w-45 cursor-pointer" onClick={handleLogoClick} />
+                <div className="hidden lg:flex gap-4 sm:gap-6">
+                    {user ? (
+                        <>
+                            <div>Welcome, {user?.email}</div>
+                            <button
+                                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition-colors"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button
+                                className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-colors"
+                                onClick={handleSignIn}
+                            >
+                                Sign(in/up)
+                            </button>
+                        </>
+                    )}
+                </div>
             </div>
+            {!user && (
+                <div className="bg-[#2C2C2C] text-white py-2 w-full text-center text-lg font-medium">
+                    Sign(in/up) to checkout exciting features
+                </div>
+            )}
         </header>
     );
 };

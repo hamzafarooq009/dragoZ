@@ -20,3 +20,25 @@ body, html {
   margin: 0;
   font-family: 'Permanent Marker', cursive;
 }
+
+/* Additional styles for the new design */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.bg-dragonball-bg {
+  background-image: url('/dragonball-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes zoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
