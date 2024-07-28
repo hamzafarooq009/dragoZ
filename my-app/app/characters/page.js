@@ -90,7 +90,7 @@ const CharactersPage = () => {
   };
 
   return (
-    <div className="bg-cover min-h-screen" style={{ backgroundImage: "url('/dragonballz-background.jpg')" }}>
+      <div className="bg-gradient-to-r from-black to-gray-700 text-white min-h-[100dvh] flex flex-col">
       <div className="container mx-auto p-4">
         <h1 className="text-5xl text-white flex justify-center mb-10">Search your character</h1>
         <div className="flex justify-center mb-20">
