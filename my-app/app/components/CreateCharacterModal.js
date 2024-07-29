@@ -11,6 +11,12 @@ export default function CreateCharacterModal({ closeModal }) {
     race: '',
     gender: '',
     planetOfOrigin: '',
+    bodyType: '',
+    clothingDescription: '',
+    hairDescription: '',
+    expressionDescription: '',
+    description: '',
+    backgroundDescription: ''
   });
   const [isLoading, setIsLoading] = useState(false);
   const [generatedImage, setGeneratedImage] = useState(null);
@@ -29,7 +35,20 @@ export default function CreateCharacterModal({ closeModal }) {
     try {
       const response = await axios.post('https://api.openai.com/v1/images/generations', {
         model: 'dall-e-3',
-        prompt: `Create a detailed, full-length image of a custom character named ${formData.name}. ${formData.gender} is a ${formData.race} with a slender, athletic build. ${formData.gender} has a Ki level of ${formData.kiLevel} and a Max Ki of ${formData.maxKi}. ${formData.gender} wears futuristic armor with a unique color scheme suitable for ${formData.gender} origin from the planet ${formData.planetOfOrigin}. ${formData.gender} hair is long and black, styled elegantly, and ${formData.gender} has a calm, confident expression. The background should depict the planet ${formData.planetOfOrigin}, with a surreal, rocky landscape and a dramatic sky. The image should be in a 9:16 aspect ratio, with the character standing upright and centered.`,
+        prompt: `Create a detailed, full-length image of a custom character with the following details:
+        Name: ${formData.name}
+        Gender: ${formData.gender}
+        Race: ${formData.race}
+        Body Type: ${formData.bodyType}
+        Ki Level: ${formData.kiLevel}
+        Max Ki: ${formData.maxKi}
+        Planet of Origin: ${formData.planetOfOrigin}
+        Clothing: ${formData.clothingDescription}
+        Hair: ${formData.hairDescription}
+        Expression: ${formData.expressionDescription}
+        Description: ${formData.description}
+        Background: ${formData.backgroundDescription}
+        The image should be in a 9:16 aspect ratio, with the character standing upright and centered. The image should only contain the character without any additional text, labels, graphs, or annotations.`,
         size: '1024x1792',
         n: 1,
       }, {
@@ -119,6 +138,60 @@ export default function CreateCharacterModal({ closeModal }) {
             onChange={handleInputChange}
             className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          
+          <input
+            type="text"
+            name="bodyType"
+            placeholder="bodyType"
+            value={formData.bodyType}
+            onChange={handleInputChange}
+            className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="text"
+            name="clothingDescription"
+            placeholder="clothingDescription"
+            value={formData.clothingDescription}
+            onChange={handleInputChange}
+            className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="text"
+            name="hairDescription"
+            placeholder="hairDescription"
+            value={formData.hairDescription}
+            onChange={handleInputChange}
+            className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="text"
+            name="expressionDescription"
+            placeholder="expressionDescription"
+            value={formData.expressionDescription}
+            onChange={handleInputChange}
+            className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="text"
+            name="description"
+            placeholder="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="text"
+            name="backgroundDescription"
+            placeholder="backgroundDescription"
+            value={formData.backgroundDescription}
+            onChange={handleInputChange}
+            className="mb-4 px-4 py-2 w-full rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
           <button
             type="submit"
             className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors"
